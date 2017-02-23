@@ -1,7 +1,8 @@
 true : bin_annot, safe_string
 true: warn_error(+1..49), warn(A-3-4-41-44)
 true: package(bytes lwt astring logs result cstruct fmt rresult ipaddr)
-true: package(dns mirage-flow cstruct.lwt channel io-page.unix)
+true: package(dns mirage-flow-lwt cstruct.lwt mirage-channel-lwt io-page.unix)
+true: package(mirage-types-lwt)
 
 <bin>: include
 <lib>: include

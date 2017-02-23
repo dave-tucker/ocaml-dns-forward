@@ -29,7 +29,7 @@ module Client = struct
   module Make
     (Sockets: Dns_forward_s.FLOW_CLIENT with type address = Ipaddr.t * int)
     (Packet: Dns_forward_s.READERWRITER with type flow = Sockets.flow)
-    (Time: V1_LWT.TIME) = struct
+    (Time: Mirage_types_lwt.TIME) = struct
     type address = Dns_forward_config.Address.t
     type request = Cstruct.t
     type response = Cstruct.t
@@ -233,7 +233,7 @@ module Server = struct
   module Make
     (Sockets: Dns_forward_s.FLOW_SERVER with type address = Ipaddr.t * int)
     (Packet: Dns_forward_s.READERWRITER with type flow = Sockets.flow)
-    (Time: V1_LWT.TIME) = struct
+    (Time: Mirage_types_lwt.TIME) = struct
     type address = Dns_forward_config.Address.t
     type request = Cstruct.t
     type response = Cstruct.t

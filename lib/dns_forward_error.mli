@@ -17,7 +17,7 @@
 
 type 'a t = ('a, [ `Msg of string ]) Lwt_result.t
 
-module FromFlowError(Flow: V1_LWT.FLOW): sig
+module FromFlowError(Flow: Mirage_flow_lwt.S): sig
   val ( >>= ) : [< `Eof | `Error of Flow.error | `Ok of 'b ] Lwt.t ->
     ('b -> ('c, [> `Msg of string ] as 'd) result Lwt.t) -> ('c, 'd) result Lwt.t
 end

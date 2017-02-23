@@ -22,7 +22,7 @@ module type Comparable = sig
 end
 
 module type FLOW_CLIENT = sig
-  include Mirage_flow_s.SHUTDOWNABLE
+  include Mirage_flow.SHUTDOWNABLE
   type address
   val connect: ?read_buffer_size:int -> address
     -> (flow, [ `Msg of string ]) Lwt_result.t

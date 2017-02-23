@@ -18,10 +18,11 @@ open Lwt.Infix
 
 type 'a t = ('a, [ `Msg of string ]) Lwt_result.t
 
-module FromFlowError(Flow: V1_LWT.FLOW) = struct
+module FromFlowError(Flow: Mirage_flow_lwt.S) = struct
   let (>>=) m f = m >>= function
     | `Eof -> Lwt.return (Result.Error (`Msg "Unexpected end of file"))
-    | `Error e -> Lwt.return (Result.Error (`Msg (Flow.error_message e)))
+    | `Error e ->
+      Lwt.return (Result.Error (`Msg e))
     | `Ok x -> f x
 end
 
